@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
 import configureStore from './CreateStore'
 import rootSaga from '../Sagas/'
-import AppNavigation from '../Navigation/AppNavigation'
+// import AppNavigation from '../Navigation/AppNavigation'
+import AppNavigation from '../Navigation/RootNavigation'
 import Other from '../Reducers'
 
 const navReducer = (state, action) => {
