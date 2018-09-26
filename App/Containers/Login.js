@@ -6,7 +6,7 @@ import { login } from '../Actions/member'
 
 class Login extends Component {
   static propTypes = {
-    Layout: PropTypes.func.isRequired,
+    // Layout: PropTypes.func.isRequired,
     locale: PropTypes.string,
     member: PropTypes.shape({}).isRequired,
     onFormSubmit: PropTypes.func.isRequired,
