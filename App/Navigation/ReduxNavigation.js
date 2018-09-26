@@ -2,7 +2,6 @@ import React from 'react'
 import * as ReactNavigation from 'react-navigation'
 import { connect } from 'react-redux'
 import AppNavigation from './AppNavigation'
-import RootNavigation from './RootNavigation'
 import { BackHandler } from 'react-native'
 import { addListener } from '../Util/Redux'
 
@@ -30,8 +29,7 @@ const ReduxNavigation = (props) => {
   // Android back button
   BackHandler.addEventListener('hardwareBackPress', handleHardwareBack(props, navigation))
 
-  // return <AppNavigation navigation={navigation} />
-  return <RootNavigation navigation={navigation} />
+  return <AppNavigation navigation={navigation} />
 }
 
 const mapStateToProps = state => ({ nav: state.nav })
