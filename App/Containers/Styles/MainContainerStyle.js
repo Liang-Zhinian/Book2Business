@@ -6,7 +6,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     marginTop: Metrics.doubleBaseMargin,
-    marginBottom: Metrics.doubleBaseMargin,
+    marginBottom: Metrics.doubleBaseMargin
     // marginHorizontal: Metrics.doubleBaseMargin
   },
   backButton: {
@@ -14,7 +14,7 @@ export default StyleSheet.create({
     // top: -59,
     // left: -10,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'center'
     // padding: 20
   },
   backButtonIcon: {
@@ -30,5 +30,5 @@ export default StyleSheet.create({
   header: {
     flexDirection: 'row',
     marginHorizontal: Metrics.doubleBaseMargin
-  },
+  }
 })

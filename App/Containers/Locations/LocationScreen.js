@@ -51,7 +51,7 @@ class LocationScreen extends Component {
     }
   };
 
-  constructor() {
+  constructor () {
     super()
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
 
@@ -63,7 +63,7 @@ class LocationScreen extends Component {
 
   animatedContainerWithNavbar = null;
 
-  componentDidMount() {
+  componentDidMount () {
     this.setState({
       loaded: true
     })
@@ -82,7 +82,7 @@ class LocationScreen extends Component {
       })
   }
 
-  toggleMenu() {
+  toggleMenu () {
     let icon = 'times'
     // let pressMenu = this.showMenu.bind(this);
     if (this.state.isMenuOpen) {
@@ -101,7 +101,7 @@ class LocationScreen extends Component {
     })
   }
 
-  renderRow(rowData) {
+  renderRow (rowData) {
     const img = rowData.image
     return (
       <TouchableHighlight style={[styles.containerRow]}>
@@ -133,12 +133,12 @@ class LocationScreen extends Component {
     )
   }
 
-  goTo(route) {
+  goTo (route) {
     setTimeout(this.toggleMenu.bind(this), 1000)
     this.props.navigation.navigate(route)
   }
 
-  render() {
+  render () {
     const { nearbyData, navigation } = this.props
 
     return (

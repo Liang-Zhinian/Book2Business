@@ -27,7 +27,7 @@ const { UBER_CLIENT_ID } = Secrets
 const MAP_TAP_THRESHOLD = 100
 
 export default class LocationInfo extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     const appState = AppState.currentState
@@ -45,7 +45,7 @@ export default class LocationInfo extends React.Component {
     this.activeMapHeight = Metrics.screenHeight - this.scrollSpot
   }
 
-  componentWillMount() {
+  componentWillMount () {
     // Get the map tap check
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
@@ -54,11 +54,11 @@ export default class LocationInfo extends React.Component {
     })
   }
 
-  componentDidMount() {
+  componentDidMount () {
     AppState.addEventListener('change', this._handleAppStateChange)
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     AppState.removeEventListener('change', this._handleAppStateChange)
   }
 
@@ -79,7 +79,7 @@ export default class LocationInfo extends React.Component {
     this.setState({ mapTouchStart: '' })
   }
 
-  openMaps(daddr = '128+NW+Eleventh+Ave+Portland,+OR+97209') {
+  openMaps (daddr = '128+NW+Eleventh+Ave+Portland,+OR+97209') {
     const googleMaps = `comgooglemaps://?daddr=${daddr}`
     const appleMaps = `http://maps.apple.com?daddr=${daddr}`
 
@@ -96,7 +96,7 @@ export default class LocationInfo extends React.Component {
     })
   }
 
-  openLink(url) {
+  openLink (url) {
     Linking.canOpenURL(url).then((supported) => {
       if (supported) {
         Linking.openURL(url)
@@ -106,7 +106,7 @@ export default class LocationInfo extends React.Component {
     })
   }
 
-  openLyft() {
+  openLyft () {
     const lat = `destination[latitude]=${VENUE_LATITUDE}`
     const lng = `destination[longitude]=${VENUE_LONGITUDE}`
     const lyft = `lyft://ridetype?${lat}&${lng}`
@@ -120,7 +120,7 @@ export default class LocationInfo extends React.Component {
     })
   }
 
-  openUber() {
+  openUber () {
     const pickup = 'action=setPickup&pickup=my_location'
     const client = `client_id=${UBER_CLIENT_ID}`
     const lat = `dropoff[latitude]=${VENUE_LATITUDE}`
@@ -222,7 +222,7 @@ export default class LocationInfo extends React.Component {
     )
   }
 
-  renderMap() {
+  renderMap () {
     const { mapViewMode } = this.state
     return (
       <View ref='mapContainer' {...this._panResponder.panHandlers}>
@@ -240,7 +240,7 @@ export default class LocationInfo extends React.Component {
     this.openMaps()
   }
 
-  render() {
+  render () {
     const { showRideOptions, showGalleryOptions } = this.state
     const { nearbyData } = this.props
     const { event } = Animated

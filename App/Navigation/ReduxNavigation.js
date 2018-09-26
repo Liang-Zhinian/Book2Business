@@ -2,6 +2,7 @@ import React from 'react'
 import * as ReactNavigation from 'react-navigation'
 import { connect } from 'react-redux'
 import AppNavigation from './AppNavigation'
+import createRootNavigator from './createRootNavigator'
 import { BackHandler } from 'react-native'
 import { addListener } from '../Util/Redux'
 
@@ -30,7 +31,13 @@ const ReduxNavigation = (props) => {
   BackHandler.addEventListener('hardwareBackPress', handleHardwareBack(props, navigation))
 
   return <AppNavigation navigation={navigation} />
+  // const Layout = createRootNavigator(false);
+  // return (
+  //   <Layout navigation={navigation} />
+  // );
 }
 
-const mapStateToProps = state => ({ nav: state.nav })
+const mapStateToProps = state => ({
+  nav: state.nav
+})
 export default connect(mapStateToProps)(ReduxNavigation)

@@ -30,7 +30,7 @@ class UpdateContact extends React.Component {
     success: null
   }
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       primaryTelephone: props.location.ContactInformation.PrimaryTelephone,
@@ -40,7 +40,6 @@ class UpdateContact extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-
   }
 
   handleChange = (name, val) => {
@@ -56,7 +55,7 @@ class UpdateContact extends React.Component {
       .catch(e => console.log(`Error: ${e}`))
   }
 
-  render() {
+  render () {
     const { loading, error, success } = this.props
 
     const {

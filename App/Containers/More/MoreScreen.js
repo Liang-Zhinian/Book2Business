@@ -80,7 +80,7 @@ const data = [
 ]
 
 class MoreScreen extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     const appState = AppState.currentState
@@ -102,15 +102,15 @@ class MoreScreen extends Component {
     header: null
   }
 
-  componentDidMount() {
+  componentDidMount () {
     AppState.addEventListener('change', this._handleAppStateChange)
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     AppState.removeEventListener('change', this._handleAppStateChange)
   }
 
-  render() {
+  render () {
     return (
       <MainContainer
         header={null}>

@@ -1,5 +1,5 @@
 {
-  "name": "chainreactapp",
+  "name": "Book2Business",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -124,5 +124,18 @@
       "./Tests/Setup"
     ],
     "babel": "inherit"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "describe",
+      "it",
+      "fetch",
+      "navigator",
+      "__DEV__",
+      "XMLHttpRequest",
+      "FormData",
+      "React$Element"
+    ]
   }
 }
