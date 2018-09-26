@@ -56,8 +56,12 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Testing purposes</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Chain React would like to show you your location in relation to the conference destination</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Testing purposes</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>
@@ -89,14 +93,12 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<false/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Testing purposes</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Testing purposes</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
