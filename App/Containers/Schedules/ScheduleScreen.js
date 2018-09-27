@@ -22,6 +22,7 @@ import {
   sum,
   findIndex
 } from 'ramda'
+import Agenda from './Agenda';
 import NotificationActions from '../../Redux/NotificationRedux'
 import Config from '../../Config/AppConfig'
 import { Images } from '../../Themes'
@@ -34,7 +35,7 @@ const addSpecials = (specialTalksList, talks) =>
   map((talk) => assoc('special', contains(talk.title, specialTalksList), talk), talks)
 
 class ScheduleScreen extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     const { schedule, specialTalks, currentTime } = props
@@ -44,7 +45,7 @@ class ScheduleScreen extends Component {
     const isCurrentDay = isActiveCurrentDay(currentTime, activeDay)
     const appState = AppState.currentState
 
-    this.state = {eventsByDay, data, isCurrentDay, activeDay, appState}
+    this.state = { eventsByDay, data, isCurrentDay, activeDay, appState }
   }
 
   static navigationOptions = {
@@ -85,7 +86,7 @@ class ScheduleScreen extends Component {
       : navigation.navigate('BreakDetail')
   }
 
-  componentDidMount () {
+  componentDidMount() {
     AppState.addEventListener('change', this._handleAppStateChange)
 
     const { data } = this.state
@@ -93,11 +94,11 @@ class ScheduleScreen extends Component {
     // fixes https://github.com/facebook/react-native/issues/13202
     const wait = new Promise((resolve) => setTimeout(resolve, 200))
     wait.then(() => {
-      this.refs.scheduleList.scrollToIndex({index, animated: false})
+      this.refs.scheduleList.scrollToIndex({ index, animated: false })
     })
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     AppState.removeEventListener('change', this._handleAppStateChange)
   }
 
@@ -106,10 +107,10 @@ class ScheduleScreen extends Component {
     if (appState.match(/inactive|background/) && nextAppState === 'active') {
       // this.props.getScheduleUpdates()
     }
-    this.setState({appState: nextAppState})
+    this.setState({ appState: nextAppState })
   }
 
-  componentWillReceiveProps (newProps) {
+  componentWillReceiveProps(newProps) {
     const { activeDay, eventsByDay } = this.state
     const { specialTalks, currentTime, schedule } = newProps
 
@@ -145,14 +146,14 @@ class ScheduleScreen extends Component {
     const data = addSpecials(specialTalks, eventsByDay[activeDay])
     const isCurrentDay = isActiveCurrentDay(currentTime, activeDay)
 
-    this.setState({data, activeDay, isCurrentDay}, () => {
+    this.setState({ data, activeDay, isCurrentDay }, () => {
       if (isCurrentDay) {
         // Scroll to active
         const index = this.getActiveIndex(data)
-        this.refs.scheduleList.scrollToIndex({index, animated: false})
+        this.refs.scheduleList.scrollToIndex({ index, animated: false })
       } else {
         // Scroll to top
-        this.refs.scheduleList.scrollToOffset({y: 0, animated: false})
+        this.refs.scheduleList.scrollToOffset({ y: 0, animated: false })
       }
     })
   }
@@ -175,7 +176,7 @@ class ScheduleScreen extends Component {
   // if value exists, create the function calling it, otherwise false
   funcOrFalse = (func, val) => val ? () => func.call(this, val) : false
 
-  renderItem = ({item}) => {
+  renderItem = ({ item }) => {
     const { isCurrentDay } = this.state
     const { currentTime, setReminder, removeReminder } = this.props
     const { eventDuration, eventStart, eventEnd, eventFinal, special } = item
@@ -221,7 +222,7 @@ class ScheduleScreen extends Component {
     }
   }
 
-  render () {
+  render() {
     const { isCurrentDay, activeDay, data } = this.state
     return (
       <PurpleGradient style={styles.linearGradient}>
@@ -230,6 +231,7 @@ class ScheduleScreen extends Component {
           onPressIn={this.setActiveDay}
         />
         {isCurrentDay && <View style={styles.timeline} />}
+        <Agenda />
         <FlatList
           ref='scheduleList'
           data={data}
