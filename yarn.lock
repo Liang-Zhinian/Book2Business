@@ -480,10 +480,8 @@
     warning "^2.1.0"
 
 "@types/prop-types@*":
-  version "15.5.5"
-  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.5.tgz#17038dd322c2325f5da650a94d5f9974943625e3"
-  dependencies:
-    "@types/react" "*"
+  version "15.5.6"
+  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.6.tgz#9c03d3fed70a8d517c191b7734da2879b50ca26c"
 
 "@types/ramda@^0.25.20":
   version "0.25.38"
@@ -530,7 +528,7 @@ accepts@~1.3.3, accepts@~1.3.5:
 
 acorn-jsx@^3.0.0:
   version "3.0.1"
-  resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-3.0.1.tgz#afdf9488fb1ecefc8348f6fb22f464e32a58b36b"
+  resolved "http://registry.npmjs.org/acorn-jsx/-/acorn-jsx-3.0.1.tgz#afdf9488fb1ecefc8348f6fb22f464e32a58b36b"
   dependencies:
     acorn "^3.0.4"
 
@@ -567,7 +565,7 @@ ansi-align@^2.0.0:
 
 ansi-colors@^1.0.1:
   version "1.1.0"
-  resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-1.1.0.tgz#6374b4dd5d4718ff3ce27a671a3b1cad077132a9"
+  resolved "http://registry.npmjs.org/ansi-colors/-/ansi-colors-1.1.0.tgz#6374b4dd5d4718ff3ce27a671a3b1cad077132a9"
   dependencies:
     ansi-wrap "^0.1.0"
 
@@ -1752,7 +1750,7 @@ bser@^2.0.0:
 
 buf-compare@^1.0.0:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/buf-compare/-/buf-compare-1.0.1.tgz#fef28da8b8113a0a0db4430b0b6467b69730b34a"
+  resolved "http://registry.npmjs.org/buf-compare/-/buf-compare-1.0.1.tgz#fef28da8b8113a0a0db4430b0b6467b69730b34a"
 
 buffer-crc32@~0.2.3:
   version "0.2.13"
@@ -2043,9 +2041,13 @@ color-convert@^1.8.2, color-convert@^1.9.0:
   dependencies:
     color-name "1.1.3"
 
-color-name@1.1.3, color-name@^1.0.0:
+color-name@1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
+
+color-name@^1.0.0:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
 
 color-string@^1.4.0:
   version "1.5.3"
@@ -3152,7 +3154,7 @@ for-own@^0.1.4:
 
 foreground-child@^1.5.3, foreground-child@^1.5.6:
   version "1.5.6"
-  resolved "https://registry.yarnpkg.com/foreground-child/-/foreground-child-1.5.6.tgz#4fd71ad2dfde96789b980a5c0a295937cb2f5ce9"
+  resolved "http://registry.npmjs.org/foreground-child/-/foreground-child-1.5.6.tgz#4fd71ad2dfde96789b980a5c0a295937cb2f5ce9"
   dependencies:
     cross-spawn "^4"
     signal-exit "^3.0.0"
@@ -4004,8 +4006,10 @@ is-subset@^0.1.1:
   resolved "https://registry.yarnpkg.com/is-subset/-/is-subset-0.1.1.tgz#8a59117d932de1de00f245fcdd39ce43f1e939a6"
 
 is-symbol@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/is-symbol/-/is-symbol-1.0.1.tgz#3cc59f00025194b6ab2e38dbae6689256b660572"
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/is-symbol/-/is-symbol-1.0.2.tgz#a055f6ae57192caee329e7a860118b497a950f38"
+  dependencies:
+    has-symbols "^1.0.0"
 
 is-url@^1.2.1:
   version "1.2.4"
@@ -4990,8 +4994,8 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
 needle@^2.2.1:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/needle/-/needle-2.2.3.tgz#c1b04da378cd634d8befe2de965dc2cfb0fd65ca"
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/needle/-/needle-2.2.4.tgz#51931bff82533b1928b7d1d69e01f1b00ffd2a4e"
   dependencies:
     debug "^2.1.2"
     iconv-lite "^0.4.4"
@@ -5817,8 +5821,8 @@ react-native-blur@^3.0.0-alpha:
     prop-types "^15.5.10"
 
 react-native-calendars@^1.20.0:
-  version "1.20.0"
-  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.20.0.tgz#97d8fcc1b391019ef4fd103db06443cce517954f"
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.21.0.tgz#c8df92a131c7ebd3f9cf38d271e1b1cba4f8792d"
   dependencies:
     lodash.get "^4.4.2"
     lodash.isequal "^4.5.0"
@@ -5891,8 +5895,8 @@ react-native-image-crop-picker@^0.21.2:
   resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.21.2.tgz#f0e7ad4615f1f7c79ba25e2e7708042e306d258e"
 
 react-native-iphone-x-helper@^1.0.1:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.1.0.tgz#3a881720900bd8d1c67de2c465ea9aa9296180a7"
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.0.tgz#9f8a376eb00bc712115abff4420318a0063fa796"
 
 react-native-keyboard-aware-scroll-view@0.5.0:
   version "0.5.0"
@@ -6807,8 +6811,8 @@ spawn-wrap@^1.3.6:
     which "^1.3.0"
 
 spdx-correct@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/spdx-correct/-/spdx-correct-3.0.0.tgz#05a5b4d7153a195bc92c3c425b69f3b2a9524c82"
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/spdx-correct/-/spdx-correct-3.0.1.tgz#434434ff9d1726b4d9f4219d1004813d80639e30"
   dependencies:
     spdx-expression-parse "^3.0.0"
     spdx-license-ids "^3.0.0"

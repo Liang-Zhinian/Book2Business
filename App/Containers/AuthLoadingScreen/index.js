@@ -4,8 +4,10 @@ import {
   AsyncStorage,
   StatusBar,
   StyleSheet,
-  View
+  View,
+  Image
 } from 'react-native'
+import { NavigationActions } from 'react-navigation'
 
 export default class AuthLoadingScreen extends React.Component {
   constructor (props) {
@@ -19,14 +21,26 @@ export default class AuthLoadingScreen extends React.Component {
 
     // This will switch to the App screen or Auth screen and this loading
     // screen will be unmounted and thrown away.
-    this.props.navigation.navigate(userToken ? 'App' : 'Auth')
+    // this.props.navigation.navigate(userToken ? 'App' : 'Auth')
+    const that = this
+    setTimeout(() => {
+      that._resetRouteStack(userToken ? 'App' : 'Auth')
+    }, 2000)
+    
   };
+
+  _resetRouteStack = (routeName) => {
+    this.props.navigation.dispatch(NavigationActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: routeName })]
+    }))
+  }
 
   // Render any loading content that you like here
   render () {
     return (
       <View style={styles.container}>
-        <ActivityIndicator />
+        <Image source={require('./images/background.jpg')} />
         <StatusBar barStyle='default' />
       </View>
     )
@@ -34,5 +48,5 @@ export default class AuthLoadingScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {flex: 1}
+  container: { flex: 1 }
 })

@@ -1,22 +1,20 @@
 import React, { Component } from 'react'
-import { StackNavigator, TabNavigator, TabBarBottom, Image } from 'react-navigation'
+import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import { Images } from '../Themes'
 import ScheduleScreen from '../Containers/Schedules/ScheduleScreen'
 import TalkDetailScreen from '../Containers/TalkDetailScreen'
 import BreakDetailScreen from '../Containers/BreakDetailScreen'
-import LocationScreen from '../Containers/LocationScreen'
-import AboutScreen from '../Containers/AboutScreen'
 import styles from './Styles/NavigationStyles'
 
 import ClientsStack from './Stacks/ClientsStack'
 import ReportsStack from './Stacks/ReportsStack'
 import MoreStack from './Stacks/MoreStack'
-import SignInScreen from '../Containers/Login'
+import SignInScreen from '../Containers/LoginScreen'
+import AuthLoadingScreen from '../Containers/AuthLoadingScreen'
 
 const ScheduleStack = StackNavigator({
-  // SignIn: { screen: SignInScreen },
   Home: { screen: ScheduleScreen },
   TalkDetail: { screen: TalkDetailScreen },
   BreakDetail: { screen: BreakDetailScreen }
@@ -26,29 +24,28 @@ const ScheduleStack = StackNavigator({
   cardStyle: styles.card
 })
 
-const TabNav = TabNavigator({
-  Schedule: { screen: ScheduleStack },
-  // Location: { screen: LocationScreen },
-  // About: { screen: AboutScreen },
-  Clients: { screen: ClientsStack },
-  Reports: { screen: ReportsStack },
-  More: { screen: MoreStack }
+const TabNav = TabNavigator(
+  {
+    Schedule: { screen: ScheduleStack },
+    Clients: { screen: ClientsStack },
+    Reports: { screen: ReportsStack },
+    More: { screen: MoreStack }
 
-}, {
-  key: 'Schedule',
-  tabBarComponent: TabBarBottom,
-  tabBarPosition: 'bottom',
-  animationEnabled: true,
-  swipeEnabled: true,
-  headerMode: 'none',
-  initialRouteName: 'Schedule',
-  tabBarOptions: {
-    style: styles.tabBar,
-    labelStyle: styles.tabBarLabel,
-    activeTintColor: 'white',
-    inactiveTintColor: 'white'
-  },
-  navigationOptions: ({ navigation }) => ({
+  }, {
+    key: 'Schedule',
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: 'bottom',
+    animationEnabled: true,
+    swipeEnabled: true,
+    headerMode: 'none',
+    initialRouteName: 'Schedule',
+    tabBarOptions: {
+      style: styles.tabBar,
+      labelStyle: styles.tabBarLabel,
+      activeTintColor: 'white',
+      inactiveTintColor: 'white'
+    },
+    navigationOptions: ({ navigation }) => ({
       /*
       tabBarIcon: ({ focused, tintColor }) => {
         const { routeName } = navigation.state;
@@ -78,15 +75,19 @@ const TabNav = TabNavigator({
 
         return <Ionicons name={iconName} size={25} color={tintColor} />;
       }, */
-  })
-})
+    })
+  }
+)
 
-const AppNavigation = StackNavigator({
-  SignIn: { screen: SignInScreen },
-  AppStack: { screen: TabNav }
-}, {
+const routesConfig = {
+  Splash: { screen: AuthLoadingScreen },
+  Auth: { screen: SignInScreen },
+  App: { screen: TabNav }
+}
+
+const AppNavigation = StackNavigator(routesConfig, {
   headerMode: 'none',
-  initialRouteName: 'SignIn',
+  initialRouteName: 'Splash',
   cardStyle: styles.card
 })
 

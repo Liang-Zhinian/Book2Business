@@ -12,6 +12,6 @@ import * as Lite from './Lite'
 const Purple = { Colors, Fonts, Images, Videos, Metrics, ApplicationStyles, ScreenStylesType }
 
 export default themes = {
-    Lite,
-    Purple
+  Lite,
+  Purple
 }
