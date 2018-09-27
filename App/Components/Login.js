@@ -6,7 +6,7 @@ import {
 // import { Actions } from 'react-native-router-flux';
 import Loading from './Loading'
 import Messages from './Messages'
-import { translate } from '../../i18n'
+import { translate } from '../I18n'
 import Header from './Header'
 import Spacer from './Spacer'
 

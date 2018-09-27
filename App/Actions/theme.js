@@ -13,5 +13,4 @@ export default (theme) => {
   }).catch(async (err) => {
     throw err.message
   })
-
 }

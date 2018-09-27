@@ -7,7 +7,7 @@ import {
   // Image,
   // Text,
   // Linking,
-  Animated,
+  Animated
   // PanResponder,
   // LayoutAnimation
 } from 'react-native'
@@ -43,7 +43,7 @@ class UpdateImage extends React.Component {
     success: null
   }
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       scrollY: new Animated.Value(0),
@@ -53,7 +53,6 @@ class UpdateImage extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-
   }
 
   handleChange = (name, val) => {
@@ -132,7 +131,7 @@ class UpdateImage extends React.Component {
     )
   }
 
-  render() {
+  render () {
     const { loading, error, success } = this.props
 
     const {
@@ -171,7 +170,7 @@ class UpdateImage extends React.Component {
               <ImageCropperButton
                 handePickButton={(image) => {
                   console.log(image)
-                  this.setState({ backgroundImage: image });
+                  this.setState({ backgroundImage: image })
                 }} />
 
               {/* </Form> */}

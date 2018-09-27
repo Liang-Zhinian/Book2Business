@@ -3,10 +3,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { login } from '../Actions/member'
+import Layout from '../Components/Login'
 
 class Login extends Component {
   static propTypes = {
-    Layout: PropTypes.func.isRequired,
+    // Layout: PropTypes.func.isRequired,
     locale: PropTypes.string,
     member: PropTypes.shape({}).isRequired,
     onFormSubmit: PropTypes.func.isRequired,
@@ -18,12 +19,17 @@ class Login extends Component {
     locale: null
   }
 
+  static navigationOptions = {
+    header: null
+  }
+
   state = {
     errorMessage: null
   }
 
   onFormSubmit = (data) => {
     const { onFormSubmit } = this.props
+    this.props.navigation.navigate('AppStack')
     return onFormSubmit(data)
       .catch((err) => { this.setState({ errorMessage: err }); throw err })
   }
@@ -32,7 +38,7 @@ class Login extends Component {
     const {
       member,
       locale,
-      Layout,
+      // Layout,
       isLoading,
       successMessage
     } = this.props

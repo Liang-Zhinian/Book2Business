@@ -59,7 +59,6 @@ class UpdateLocationInfo extends Component {
       isLoading
     } = this.props
 
-
     const { successMessage, errorMessage } = this.state
 
     return (

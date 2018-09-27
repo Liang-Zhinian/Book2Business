@@ -13,8 +13,10 @@ import styles from './Styles/NavigationStyles'
 import ClientsStack from './Stacks/ClientsStack'
 import ReportsStack from './Stacks/ReportsStack'
 import MoreStack from './Stacks/MoreStack'
+import SignInScreen from '../Containers/Login'
 
 const ScheduleStack = StackNavigator({
+  // SignIn: { screen: SignInScreen },
   Home: { screen: ScheduleScreen },
   TalkDetail: { screen: TalkDetailScreen },
   BreakDetail: { screen: BreakDetailScreen }
@@ -79,4 +81,13 @@ const TabNav = TabNavigator({
   })
 })
 
-export default TabNav
+const AppNavigation = StackNavigator({
+  SignIn: { screen: SignInScreen },
+  AppStack: { screen: TabNav }
+}, {
+  headerMode: 'none',
+  initialRouteName: 'SignIn',
+  cardStyle: styles.card
+})
+
+export default AppNavigation // TabNav

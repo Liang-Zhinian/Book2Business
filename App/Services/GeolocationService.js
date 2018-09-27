@@ -3,7 +3,6 @@ export const getUserPosition = async () => {
   return new Promise(async (resolve, reject) => {
         // get geolocation
     navigator.geolocation.getCurrentPosition(pos => {
-
       resolve(pos.coords)
     }, err => {
       let err_msg = `getUserPosition ERROR: (${err.code}) - ${err.message}`
@@ -22,7 +21,6 @@ export const getUserPosition = async () => {
 export const watchUserPosition = async () => {
   return new Promise(async (resolve, reject) => {
     let watchID = navigator.geolocation.watchPosition(pos => {
-
       resolve({
         watchID,
         coords: pos.coords

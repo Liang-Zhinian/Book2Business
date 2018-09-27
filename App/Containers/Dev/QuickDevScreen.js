@@ -33,7 +33,7 @@ import switchTheme from '../../Actions/theme'
 import MainContainer from '../MainContainer'
 
 class QuickDevScreen extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     const appState = AppState.currentState
@@ -70,15 +70,15 @@ class QuickDevScreen extends Component {
   //   }
   // };
 
-  componentDidMount() {
+  componentDidMount () {
     AppState.addEventListener('change', this._handleAppStateChange)
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     AppState.removeEventListener('change', this._handleAppStateChange)
   }
 
-  render() {
+  render () {
     console.log('MainContainer', this.props.theme)
     return (
 
@@ -87,7 +87,7 @@ class QuickDevScreen extends Component {
         header={{
           headerTitle: 'Quick Dev'
         }}
-        scrollEnabled={true}
+        scrollEnabled
         style={[{ paddingHorizontal: 10 }]}
       >
         <LocationPickerButton
@@ -96,15 +96,13 @@ class QuickDevScreen extends Component {
           initialRegion={{ title: 'Chanel@Elements', 'latitude': 22.3048708, 'longitude': 114.1615219, latitudeDelta: 0.05, longitudeDelta: 0.01 }}
           locations={[{ title: 'Chanel@Elements', 'latitude': 22.3048708, 'longitude': 114.1615219 }]} />
 
-        <Button title='Update Location Image' onPress={() => { this.props.navigation.navigate('UpdateBackgroundScreen') }}>
-        </Button>
+        <Button title='Update Location Image' onPress={() => { this.props.navigation.navigate('UpdateBackgroundScreen') }} />
 
         <ImageCropperButton
           handePickButton={(image) => {
           }} />
 
-        <Button title='Switch theme' onPress={() => { this.props.switchTheme('Lite') }}>
-        </Button>
+        <Button title='Switch theme' onPress={() => { this.props.switchTheme('Lite') }} />
       </MainContainer>
     )
   }
