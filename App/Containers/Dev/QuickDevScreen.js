@@ -79,7 +79,7 @@ class QuickDevScreen extends Component {
   }
 
   render () {
-    console.log('MainContainer', this.props.theme)
+    // console.log('MainContainer', this.props.theme)
     return (
 
       <MainContainer

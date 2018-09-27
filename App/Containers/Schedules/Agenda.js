@@ -4,7 +4,7 @@ import {
   View,
   StyleSheet
 } from 'react-native';
-import {Agenda} from 'react-native-calendars';
+import { Agenda } from 'react-native-calendars';
 
 export default class AgendaScreen extends Component {
   constructor(props) {
@@ -14,35 +14,42 @@ export default class AgendaScreen extends Component {
     };
   }
 
+  // componentDidMount(){
+  //   this.setState({items:this.props.items});
+  // }
+
   render() {
+    if (!this.props.items || this.props.items.length == 0) return <View />
     return (
       <Agenda
-        items={this.state.items}
-        loadItemsForMonth={this.loadItems.bind(this)}
+        items={this.props.items || {}}
+        loadItemsForMonth={this.props.loadItemsForMonth}
         selected={'2017-05-16'}
-        renderItem={this.renderItem.bind(this)}
+        renderItem={this.props.renderItem}
         renderEmptyDate={this.renderEmptyDate.bind(this)}
         rowHasChanged={this.rowHasChanged.bind(this)}
-        // markingType={'period'}
-        // markedDates={{
-        //    '2017-05-08': {textColor: '#666'},
-        //    '2017-05-09': {textColor: '#666'},
-        //    '2017-05-14': {startingDay: true, endingDay: true, color: 'blue'},
-        //    '2017-05-21': {startingDay: true, color: 'blue'},
-        //    '2017-05-22': {endingDay: true, color: 'gray'},
-        //    '2017-05-24': {startingDay: true, color: 'gray'},
-        //    '2017-05-25': {color: 'gray'},
-        //    '2017-05-26': {endingDay: true, color: 'gray'}}}
-         // monthFormat={'yyyy'}
-         // theme={{calendarBackground: 'red', agendaKnobColor: 'green'}}
-        //renderDay={(day, item) => (<Text>{day ? day.day: 'item'}</Text>)}
+        renderDay={this.props.renderDay}
+      // markingType={'period'}
+      // markedDates={{
+      //    '2017-05-08': {textColor: '#666'},
+      //    '2017-05-09': {textColor: '#666'},
+      //    '2017-05-14': {startingDay: true, endingDay: true, color: 'blue'},
+      //    '2017-05-21': {startingDay: true, color: 'blue'},
+      //    '2017-05-22': {endingDay: true, color: 'gray'},
+      //    '2017-05-24': {startingDay: true, color: 'gray'},
+      //    '2017-05-25': {color: 'gray'},
+      //    '2017-05-26': {endingDay: true, color: 'gray'}}}
+      // monthFormat={'yyyy'}
+      // theme={{calendarBackground: 'red', agendaKnobColor: 'green'}}
+      //renderDay={(day, item) => (<Text>{day ? day.day: 'item'}</Text>)}
       />
     );
   }
 
   loadItems(day) {
     setTimeout(() => {
-      for (let i = -15; i < 85; i++) {
+      //for (let i = -15; i < 85; i++) {
+      for (let i = 0; i < 1; i++) {
         const time = day.timestamp + i * 24 * 60 * 60 * 1000;
         const strTime = this.timeToString(time);
         if (!this.state.items[strTime]) {
@@ -56,9 +63,9 @@ export default class AgendaScreen extends Component {
           }
         }
       }
-      //console.log(this.state.items);
+      console.log(this.state.items);
       const newItems = {};
-      Object.keys(this.state.items).forEach(key => {newItems[key] = this.state.items[key];});
+      Object.keys(this.state.items).forEach(key => { newItems[key] = this.state.items[key]; });
       this.setState({
         items: newItems
       });
@@ -68,7 +75,7 @@ export default class AgendaScreen extends Component {
 
   renderItem(item) {
     return (
-      <View style={[styles.item, {height: item.height}]}><Text>{item.name}</Text></View>
+      <View style={[styles.item, { height: item.height }]}><Text>{item.name}</Text></View>
     );
   }
 
@@ -99,7 +106,7 @@ const styles = StyleSheet.create({
   },
   emptyDate: {
     height: 15,
-    flex:1,
+    flex: 1,
     paddingTop: 30
   }
 });

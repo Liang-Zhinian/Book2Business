@@ -177,6 +177,8 @@ class ScheduleScreen extends Component {
   funcOrFalse = (func, val) => val ? () => func.call(this, val) : false
 
   renderItem = ({ item }) => {
+    // console.log('FlatList renderItem', item)
+    // if (!item) return null;
     const { isCurrentDay } = this.state
     const { currentTime, setReminder, removeReminder } = this.props
     const { eventDuration, eventStart, eventEnd, eventFinal, special } = item
@@ -231,7 +233,6 @@ class ScheduleScreen extends Component {
           onPressIn={this.setActiveDay}
         />
         {isCurrentDay && <View style={styles.timeline} />}
-        <Agenda />
         <FlatList
           ref='scheduleList'
           data={data}
@@ -245,6 +246,7 @@ class ScheduleScreen extends Component {
       </PurpleGradient>
     )
   }
+
 }
 
 const mapStateToProps = (state) => {
@@ -267,3 +269,59 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScheduleScreen)
+
+export class AgendaScreen extends Component {
+  constructor(props) {
+    super(props)
+    const appState = AppState.currentState
+
+    this.state = { agendaData: {} }
+  }
+
+  render() {
+    // const { isCurrentDay, activeDay, data } = this.state
+    return (
+        <Agenda
+          // specify how each date should be rendered. day can be undefined if the item is not first in that day.
+          renderDay={(day, item) => {
+            return (
+              <View />
+            );
+          }}
+          items={this.state.agendaData}
+          renderItem={(item) => {
+            console.log('Agenda renderItem', item)
+            return <ScheduleScreen navigation={this.props.navigation} />
+          }}
+          loadItemsForMonth={(month) => {
+            console.log('Agenda loadItemsForMonth', month, this.state.agendaData)
+            const time = month.timestamp;
+            const strTime = this.timeToString(time);
+            if (!this.state.agendaData[strTime]) {
+              this.state.agendaData[strTime] = [];
+              // const numItems = data.length;
+              // for (let j = 0; j < numItems; j++) {
+              //   this.state.agendaData[strTime].push({
+              //     name: data[j].title,
+              //     ...data[j]
+              //   });
+              // }
+              this.state.agendaData[strTime].push({
+                name: strTime,
+              });
+            }
+            console.log('Agenda items', this.state.agendaData);
+            const newItems = {};
+            Object.keys(this.state.agendaData).forEach(key => { newItems[key] = this.state.agendaData[key]; });
+            this.setState({
+              agendaData: newItems
+            });
+          }} />
+    )
+  }
+
+  timeToString(time) {
+    const date = new Date(time);
+    return date.toISOString().split('T')[0];
+  }
+}

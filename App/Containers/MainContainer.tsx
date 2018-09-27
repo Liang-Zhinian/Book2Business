@@ -6,10 +6,12 @@ import {
 import { NavigationActions } from 'react-navigation'
 import { connect } from 'react-redux'
 import PurpleGradient from '../Components/PurpleGradient'
+import LiteGradient from '../Components/LiteGradient'
 import styles from './Styles/MainContainerStyle'
-import { Images, Colors } from '../Themes'
+import themes, { Images, Colors } from '../Themes'
 import GradientHeader from '../Components/GradientHeader'
 
+let theme = themes.Purple;
 
 function ContainerWithScrolling(props) {
   return (
@@ -27,6 +29,32 @@ function ContainerWithoutScrolling(props) {
       {props.children}
     </View>
   )
+}
+
+function LinearContainer(props) {
+  const { theme, children, style } = props;
+  switch (theme) {
+    case 'Lite':
+      return (
+        <LiteGradient style={style}>
+          {children}
+        </LiteGradient>
+      )
+
+    case 'Purple':
+      return (
+        <PurpleGradient style={style}>
+          {children}
+        </PurpleGradient>
+      )
+
+    default:
+      return (
+        <LiteGradient style={style}>
+          {children}
+        </LiteGradient>
+      )
+  }
 }
 
 function Navbar(props) {
@@ -79,22 +107,30 @@ class MainContainer extends React.Component<MainContainerProps> {
     theme: 'Purple'
   };
 
+  constructor(props) {
+    super(props)
+    this.state = { appTheme: theme }
+  }
+
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.goBack)
+
+    theme = themes[this.props.theme]
+    this.setState({appTheme: theme})
   }
 
   render() {
     const { header, scrollEnabled, children, style, theme } = this.props;
 
     return (
-      <PurpleGradient style={[styles.linearGradient, { flex: 1 }]}>
+      <LinearContainer theme={theme} style={[styles.linearGradient, { flex: 1 }]}>
         {header && <Navbar {...header} />}
         {scrollEnabled ?
           <ContainerWithScrolling style={style}>{children}</ContainerWithScrolling>
           :
           <ContainerWithoutScrolling style={style}>{children}</ContainerWithoutScrolling>
         }
-      </PurpleGradient>
+      </LinearContainer>
     );
   }
 
@@ -102,14 +138,6 @@ class MainContainer extends React.Component<MainContainerProps> {
     const { navigation, style } = this.props;
     navigation.dispatch(NavigationActions.back())
   }
-
-  renderScrollView = (children, style) => (
-    <ScrollView>
-      <View style={[styles.container, style]}>
-        {children}
-      </View>
-    </ScrollView>
-  )
 }
 
 const mapStateToProps = (state) => {
