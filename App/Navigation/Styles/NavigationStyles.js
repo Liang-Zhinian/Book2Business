@@ -31,5 +31,8 @@ export default StyleSheet.create({
   card: {
     opacity: 1,
     backgroundColor: Colors.darkPurple
+  },
+  header: {
+    backgroundColor: Colors.background
   }
 })

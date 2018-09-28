@@ -1,6 +1,5 @@
 import status from './status'
 import member from './member'
-// import recipes from './recipes';
 import locale from './locale'
 import locations from './locations'
 import serviceCategories from './serviceCategories'

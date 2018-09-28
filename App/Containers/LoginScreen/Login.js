@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { login } from '../Actions/member'
-import Layout from '../Components/Login'
+import { login } from '../../Actions/member'
+import Layout from '../../Components/Login'
 
 class Login extends Component {
   static propTypes = {

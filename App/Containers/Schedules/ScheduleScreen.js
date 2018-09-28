@@ -105,7 +105,7 @@ class ScheduleScreen extends Component {
   _handleAppStateChange = (nextAppState) => {
     const { appState } = this.state
     if (appState.match(/inactive|background/) && nextAppState === 'active') {
-      // this.props.getScheduleUpdates()
+      this.props.getScheduleUpdates()
     }
     this.setState({ appState: nextAppState })
   }

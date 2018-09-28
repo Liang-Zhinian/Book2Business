@@ -5,12 +5,14 @@ import {
   StatusBar,
   StyleSheet,
   View,
-  Image
+  Image,
+  Text
 } from 'react-native'
 import { NavigationActions } from 'react-navigation'
+import Wallpaper from './components/Wallpaper'
 
 export default class AuthLoadingScreen extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this._bootstrapAsync()
   }
@@ -22,11 +24,12 @@ export default class AuthLoadingScreen extends React.Component {
     // This will switch to the App screen or Auth screen and this loading
     // screen will be unmounted and thrown away.
     // this.props.navigation.navigate(userToken ? 'App' : 'Auth')
-    const that = this
-    setTimeout(() => {
-      that._resetRouteStack(userToken ? 'App' : 'Auth')
-    }, 2000)
-    
+    // const that = this
+    // setTimeout(() => {
+    //   // that._resetRouteStack(userToken ? 'App' : 'Auth')
+    //   that.props.navigation.navigate(userToken ? 'App' : 'Auth')
+    // }, 5000)
+
   };
 
   _resetRouteStack = (routeName) => {
@@ -37,16 +40,25 @@ export default class AuthLoadingScreen extends React.Component {
   }
 
   // Render any loading content that you like here
-  render () {
+  render() {
     return (
-      <View style={styles.container}>
-        <Image source={require('./images/background.jpg')} />
+      <Wallpaper>
+        {/* <Image style={{flex: 1, resizeMode: 'contain'}} source={require('./images/background.jpg')} /> */}
         <StatusBar barStyle='default' />
-      </View>
+        <View style={styles.container}>
+        <Text style={styles.logo}>Book2</Text></View>
+      </Wallpaper>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 }
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent:'center',
+  },
+  logo: {
+    fontSize: 40
+  }
 })

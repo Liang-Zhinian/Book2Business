@@ -23,7 +23,7 @@ export default class Form extends Component {
     super(props)
     this.state = {
       showPass: true,
-      press: false
+      press: false,
     }
     this.showPass = this.showPass.bind(this)
   }
@@ -43,6 +43,8 @@ export default class Form extends Component {
           autoCapitalize={'none'}
           returnKeyType={'done'}
           autoCorrect={false}
+          value={this.props.username}
+          onChangeText={this.props.onChangeUsername}
         />
         <UserInput
           source={passwordImg}
@@ -51,6 +53,8 @@ export default class Form extends Component {
           returnKeyType={'done'}
           autoCapitalize={'none'}
           autoCorrect={false}
+          value={this.props.password}
+          onChangeText={this.props.onChangePassword}
         />
         <TouchableOpacity
           activeOpacity={0.7}

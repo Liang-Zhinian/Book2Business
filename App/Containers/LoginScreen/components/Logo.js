@@ -7,7 +7,7 @@ import logoImg from '../images/logo.png'
 export default class Logo extends Component {
   render () {
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, this.props.style]}>
         <Image source={logoImg} style={styles.image} />
         <Text style={styles.text}>REACT NATIVE</Text>
       </View>

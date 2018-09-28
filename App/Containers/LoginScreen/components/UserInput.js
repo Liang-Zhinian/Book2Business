@@ -4,6 +4,7 @@ import Dimensions from 'Dimensions'
 import {StyleSheet, View, TextInput, Image} from 'react-native'
 
 export default class UserInput extends Component {
+  
   render () {
     return (
       <View style={styles.inputWrapper}>
@@ -17,6 +18,8 @@ export default class UserInput extends Component {
           returnKeyType={this.props.returnKeyType}
           placeholderTextColor='white'
           underlineColorAndroid='transparent'
+          value={this.props.value}
+          onChangeText={this.props.onChangeText}
         />
       </View>
     )
@@ -29,7 +32,9 @@ UserInput.propTypes = {
   secureTextEntry: PropTypes.bool,
   autoCorrect: PropTypes.bool,
   autoCapitalize: PropTypes.string,
-  returnKeyType: PropTypes.string
+  returnKeyType: PropTypes.string,
+  onChangeText: PropTypes.func,
+  value: PropTypes.string
 }
 
 const DEVICE_WIDTH = Dimensions.get('window').width
