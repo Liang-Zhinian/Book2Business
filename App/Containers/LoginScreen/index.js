@@ -44,6 +44,10 @@ class LoginScreen extends React.Component {
     if (this.isAttempting && !newProps.fetching) {
       this.props.navigation.goBack()
     }
+
+    if (newProps.username){
+      this.props.navigation.navigate('App')
+    }
   }
 
   componentWillMount () {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StackNavigator } from 'react-navigation'
+import { StackNavigator, SwitchNavigator } from 'react-navigation'
 
 import LoadingScreen from '../Containers/AuthLoadingScreen'
 import LoggedInStackNavigator from './LoggedInStackNavigator'
@@ -7,7 +7,7 @@ import NotLoggedInStackNavigator from './NotLoggedInStackNavigator'
 
 import styles from './Styles/NavigationStyles'
 
-export const AppNavigation = StackNavigator({
+export const AppNavigation = SwitchNavigator({
   AuthLoading: { screen: LoadingScreen },
   App: { screen: LoggedInStackNavigator },
   Auth: { screen: NotLoggedInStackNavigator }

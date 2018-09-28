@@ -24,11 +24,11 @@ export default class AuthLoadingScreen extends React.Component {
     // This will switch to the App screen or Auth screen and this loading
     // screen will be unmounted and thrown away.
     // this.props.navigation.navigate(userToken ? 'App' : 'Auth')
-    // const that = this
-    // setTimeout(() => {
-    //   // that._resetRouteStack(userToken ? 'App' : 'Auth')
-    //   that.props.navigation.navigate(userToken ? 'App' : 'Auth')
-    // }, 5000)
+    const that = this
+    setTimeout(() => {
+      // that._resetRouteStack(userToken ? 'App' : 'Auth')
+      that.props.navigation.navigate(userToken ? 'App' : 'Auth')
+    }, 5000)
 
   };
 
