@@ -7,16 +7,16 @@ import {
   TouchableOpacity,
   Image,
   Keyboard,
-  LayoutAnimation, 
+  LayoutAnimation,
   Alert,
-  UIManager, 
+  UIManager,
   Button
 } from 'react-native'
 import { authorize, refresh, revoke } from 'react-native-app-auth';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styles from './Styles/LoginScreenStyles'
-import {Images, Metrics} from '../../Themes'
+import { Images, Metrics } from '../../Themes'
 import LoginActions from '../../Redux/LoginRedux'
 import { Logo, Form, Wallpaper, ButtonSubmit, SignupSection } from './components'
 import config from './AuthConfig'
@@ -35,7 +35,7 @@ class LoginScreen extends React.Component {
   keyboardDidShowListener = {}
   keyboardDidHideListener = {}
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       username: 'reactnative@infinite.red',
@@ -50,26 +50,26 @@ class LoginScreen extends React.Component {
     this.isAttempting = false
   }
 
-  componentWillReceiveProps (newProps) {
+  componentWillReceiveProps(newProps) {
     this.forceUpdate()
     // Did the login attempt complete?
     if (this.isAttempting && !newProps.fetching) {
       this.props.navigation.goBack()
     }
 
-    if (newProps.username){
+    if (newProps.username) {
       this.props.navigation.navigate('App')
     }
   }
 
-  componentWillMount () {
+  componentWillMount() {
     // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
     // TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow)
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.keyboardDidShowListener.remove()
     this.keyboardDidHideListener.remove()
   }
@@ -80,7 +80,7 @@ class LoginScreen extends React.Component {
     let newSize = Metrics.screenHeight - e.endCoordinates.height
     this.setState({
       visibleHeight: newSize,
-      topLogo: {width: 100, height: 70}
+      topLogo: { width: 100, height: 70 }
     })
   }
 
@@ -89,7 +89,7 @@ class LoginScreen extends React.Component {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
     this.setState({
       visibleHeight: Metrics.screenHeight,
-      topLogo: {width: Metrics.screenWidth}
+      topLogo: { width: Metrics.screenWidth }
     })
   }
 
@@ -108,14 +108,14 @@ class LoginScreen extends React.Component {
     this.setState({ password: text })
   }
 
-  render () {
+  render() {
     console.log(this)
     const { username, password } = this.state
     const { fetching } = this.props
     const editable = !fetching
     const textInputStyle = editable ? styles.textInput : styles.textInputReadonly
     return (
-      <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
+      <ScrollView contentContainerStyle={{ justifyContent: 'center' }} style={[styles.container, { height: this.state.visibleHeight }]} keyboardShouldPersistTaps='always'>
         <Image source={Images.logo} style={[styles.topLogo, this.state.topLogo]} />
         <View style={styles.form}>
           <View style={styles.row}>
@@ -166,12 +166,34 @@ class LoginScreen extends React.Component {
             </TouchableOpacity>
           </View>
           <Button onPress={this.authorize} title="Authorize" color="#DA2536" />
+          <Button onPress={this.requestToken} title="Request token" color="#DA2536" />
         </View>
 
       </ScrollView>
     )
   }
 
+
+  /////
+  requestToken() {
+    var data = "grant_type=password&scope=api1&username=alice&password=password&client_id=ro.client&client_secret=secret";
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        console.log(this.responseText);
+      }
+    });
+
+    xhr.open("POST", "http://localhost:5000/connect/token");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("postman-token", "c8d6f4c0-adf8-145c-00a3-099e668a1623");
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+    xhr.send(data);
+  }
 
   /////
 

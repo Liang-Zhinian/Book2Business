@@ -130,7 +130,7 @@
 		<string>com.atpath.book2business</string>
 		<key>CFBundleURLSchemes</key>
 		<array>
-		<string>io.identityserver.demo</string>
+			<string>io.identityserver.demo</string>
 		</array>
 	</dict>
 	</array>
