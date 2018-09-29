@@ -1,4 +1,5 @@
 PODS:
+  - AppAuth (0.94.0)
   - QBImagePickerController (3.4.0)
   - React (0.55.4):
     - React/Core (= 0.55.4)
@@ -40,6 +41,7 @@ PODS:
   - yoga (0.55.4.React)
 
 DEPENDENCIES:
+  - AppAuth (>= 0.94)
   - React/Core (from `../node_modules/react-native`)
   - React/RCTActionSheet (from `../node_modules/react-native`)
   - React/RCTAnimation (from `../node_modules/react-native`)
@@ -55,29 +57,25 @@ DEPENDENCIES:
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - QBImagePickerController
-    - RSKImageCropper
-
 EXTERNAL SOURCES:
   React:
-    :path: "../node_modules/react-native"
+    :path: ../node_modules/react-native
   RNImageCropPicker:
-    :path: "../node_modules/react-native-image-crop-picker"
+    :path: ../node_modules/react-native-image-crop-picker
   RNVectorIcons:
-    :path: "../node_modules/react-native-vector-icons"
+    :path: ../node_modules/react-native-vector-icons
   yoga:
-    :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
+    :path: ../node_modules/react-native/ReactCommon/yoga/yoga.podspec
 
 SPEC CHECKSUMS:
+  AppAuth: 0f099c2286a1a9754e5bd27211c43d307dc4f778
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
-  React: aa2040dbb6f317b95314968021bd2888816e03d5
-  RNImageCropPicker: 32ca4b9fef4e1b7b85ba69494242122948117e06
-  RNVectorIcons: c0dbfbf6068fefa240c37b0f71bd03b45dddac44
+  React: 755b16d9a9387e856d4dce6528130c51e4d409b8
+  RNImageCropPicker: 287fc8b372e49855fd00470393005fca674628f3
+  RNVectorIcons: f066f73bf4f25564d7ee7b1bb150e3b431f3a194
   RSKImageCropper: bd0bdf765b27c046c89728d65075b363a3b665c2
-  yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
+  yoga: c3ce6137f85f60c93a834235d7f08e2b44a42eed
 
-PODFILE CHECKSUM: 6b9789ad44176fe661db2661e494e1d0bcb72262
+PODFILE CHECKSUM: 65727214a03c2a8b43209fd6c756d05e18d3be02
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.3.1

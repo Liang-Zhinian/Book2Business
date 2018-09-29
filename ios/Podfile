@@ -24,6 +24,8 @@ target 'ChainReactApp' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'AppAuth', '>= 0.94'
+
 end
 
 # very important to have, unless you removed React dependencies for Libraries 

@@ -5814,6 +5814,10 @@ react-native-animatable@1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.2.2.tgz#a873550e6f7cb95f90baf46b9eb15b1ab56425cb"
 
+react-native-app-auth@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-app-auth/-/react-native-app-auth-3.1.0.tgz#642d920e10888c21412ddf844661363e58071ef5"
+
 react-native-blur@^3.0.0-alpha:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/react-native-blur/-/react-native-blur-3.2.2.tgz#5bfb50638d148982c9560436554ed01d77d6d07d"
